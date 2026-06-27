@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-label="Zoe photo placeholder">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#191919"/><stop offset="1" stop-color="#030303"/>
+    </linearGradient>
+    <pattern id="p" width="72" height="72" patternUnits="userSpaceOnUse">
+      <path d="M0 36h72M36 0v72" stroke="#ffffff" stroke-opacity=".07"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#g)"/>
+  <rect width="1200" height="1500" fill="url(#p)"/>
+  <path d="M180 1040C390 860 700 820 1020 940" fill="none" stroke="#d8d8d2" stroke-opacity=".26" stroke-width="3"/>
+  <path d="M170 1120C430 980 735 970 1040 1080" fill="none" stroke="#d8d8d2" stroke-opacity=".16" stroke-width="2"/>
+  <text x="70" y="116" font-family="Arial, sans-serif" font-size="28" fill="#b8c8c0" letter-spacing="12">AQUABLACK #293</text>
+  <text x="70" y="1310" font-family="Arial Black, Arial, sans-serif" font-size="150" fill="#f4f4f0" letter-spacing="-12">ZOE</text>
+  <text x="70" y="1438" font-family="Arial Black, Arial, sans-serif" font-size="116" fill="#f4f4f0" letter-spacing="-8">PEDERSEN</text>
+</svg>

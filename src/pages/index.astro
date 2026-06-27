@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { verifiedFacts } from '../data';
+import { getFeaturedPosts, imageSrc } from '../lib/sanity';
+
+const posts = await getFeaturedPosts();
+const instagramWidgetUrl = import.meta.env.PUBLIC_INSTAGRAM_WIDGET_URL;
+---
+<BaseLayout title="Zoe Pedersen | Glasgow 2026" description="Zoe Pedersen, New Zealand Aquablack and 2025 World Junior Champion in the women's 50m butterfly, selected for Glasgow 2026.">
+  <Header />
+
+  <main>
+    <section class="hero section-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">New Zealand Aquablack · Glasgow 2026</p>
+        <h1>Zoe Pedersen</h1>
+        <p class="lede">World Junior Champion in the women’s 50m butterfly. Selected to represent New Zealand at the Commonwealth Games.</p>
+        <p class="hero-body">A fast-rising New Zealand sprinter from Coast Swim Club, building towards Glasgow as part of the New Zealand team.</p>
+        <div class="hero-actions">
+          <a class="button" href="#glasgow">Glasgow 2026</a>
+          <a class="button secondary" href="#updates">Latest updates</a>
+        </div>
+      </div>
+      <div class="hero-media portrait-frame" aria-label="Zoe Pedersen portrait">
+        <img src="/assets/zoe-hero.jpg" alt="Portrait of Zoe Pedersen" />
+      </div>
+    </section>
+
+    <section class="champion-band" aria-label="Signature achievement">
+      <p class="eyebrow">Career marker</p>
+      <div class="band-line">
+        <strong>{verifiedFacts.heroAchievement.title}</strong>
+        <span>{verifiedFacts.heroAchievement.event}</span>
+        <span>{verifiedFacts.heroAchievement.result}</span>
+        <span>{verifiedFacts.heroAchievement.note}</span>
+      </div>
+    </section>
+
+    <section class="detail-ledger" aria-label="Athlete details">
+      <div class="ledger-row"><span>Club</span><strong>{verifiedFacts.club}</strong></div>
+      <div class="ledger-row"><span>Coach</span><strong>{verifiedFacts.coach}</strong></div>
+      <div class="ledger-row"><span>Stroke</span><strong>{verifiedFacts.strokes}</strong></div>
+      <div class="ledger-row"><span>Aquablack</span><strong>#{verifiedFacts.aquablackNumber}</strong></div>
+    </section>
+
+    <section class="commonwealth-section" id="glasgow">
+      <div class="commonwealth-copy">
+        <p class="eyebrow">Commonwealth Games campaign</p>
+        <h2>Road to Glasgow 2026</h2>
+        <p>Zoe has been named in the New Zealand swimming team for Glasgow 2026. Her campaign centres on the 50m butterfly, with additional permission-to-start entries in the 50m and 100m freestyle.</p>
+      </div>
+      <div class="campaign-events">
+        {verifiedFacts.glasgowEvents.map((item) => (
+          <article class="event-row">
+            <span>{item.status}</span>
+            <h3>{item.event}</h3>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="story-section" id="about">
+      <div class="story-head">
+        <p class="eyebrow">About Zoe</p>
+        <h2>Built for championship moments.</h2>
+      </div>
+
+      <figure class="story-feature-image">
+        <img src="/assets/zoe-race.jpg" alt="Zoe Pedersen after racing" />
+      </figure>
+
+      <div class="story-text-grid">
+        <p>Zoe Pedersen is a New Zealand swimmer from Coast Swim Club, racing across sprint freestyle and butterfly.</p>
+        <p>She came through the international junior ranks with a strong sprint profile and now moves toward Glasgow as part of New Zealand’s Commonwealth Games team.</p>
+        <p>Her surf lifesaving background, including Youth World Record marks, adds another layer to her profile as an all-round aquatic athlete.</p>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <div class="section-heading row-heading">
+        <div>
+          <p class="eyebrow">Campaign gallery</p>
+          <h2>Poolside, race day, podium.</h2>
+        </div>
+      </div>
+      <div class="gallery-grid-alt">
+        <figure class="gallery-panel wide-panel">
+          <img src="/assets/zoe-podium.jpg" alt="Zoe Pedersen at an awards event" />
+        </figure>
+        <figure class="gallery-panel tall-panel">
+          <img src="/assets/zoe-poolside.jpg" alt="Zoe Pedersen poolside" />
+        </figure>
+      </div>
+    </section>
+
+
+    <section class="instagram-section" id="instagram">
+      <div class="section-heading row-heading">
+        <div>
+          <p class="eyebrow">Instagram</p>
+          <h2>Follow the campaign</h2>
+        </div>
+        <a href={verifiedFacts.socials.instagram} class="text-link" target="_blank" rel="noopener">Open Instagram →</a>
+      </div>
+
+      {instagramWidgetUrl ? (
+        <iframe
+          class="instagram-widget"
+          src={instagramWidgetUrl}
+          title="Zoe Pedersen Instagram feed"
+          loading="lazy"
+        ></iframe>
+      ) : (
+        <div class="insta-marquee" aria-label="Instagram-style slideshow fallback">
+          <div class="insta-track">
+            <figure><img src="/assets/zoe-hero.jpg" alt="Zoe Pedersen portrait" /></figure>
+            <figure><img src="/assets/zoe-race.jpg" alt="Zoe Pedersen after racing" /></figure>
+            <figure><img src="/assets/zoe-poolside.jpg" alt="Zoe Pedersen poolside" /></figure>
+            <figure><img src="/assets/zoe-podium.jpg" alt="Zoe Pedersen at an awards event" /></figure>
+            <figure><img src="/assets/zoe-gold-graphic.jpg" alt="Zoe Pedersen gold result graphic" /></figure>
+            <figure><img src="/assets/zoe-hero.jpg" alt="Zoe Pedersen portrait" /></figure>
+            <figure><img src="/assets/zoe-race.jpg" alt="Zoe Pedersen after racing" /></figure>
+            <figure><img src="/assets/zoe-poolside.jpg" alt="Zoe Pedersen poolside" /></figure>
+            <figure><img src="/assets/zoe-podium.jpg" alt="Zoe Pedersen at an awards event" /></figure>
+            <figure><img src="/assets/zoe-gold-graphic.jpg" alt="Zoe Pedersen gold result graphic" /></figure>
+          </div>
+        </div>
+      )}
+    </section>
+
+    <section class="updates-section" id="updates">
+      <div class="section-heading row-heading">
+        <div>
+          <p class="eyebrow">Updates</p>
+          <h2>Latest from Zoe</h2>
+        </div>
+        <a href="/blog" class="text-link">All updates →</a>
+      </div>
+      <div class="post-grid">
+        {posts.map((post: any) => (
+          <a class="post-card" href={`/blog/${post.slug}`}>
+            <img src={imageSrc(post, '/assets/zoe-race.jpg')} alt={post.title} />
+            <div>
+              <span>{post.category} · {post.location}</span>
+              <h3>{post.title}</h3>
+              <p>{post.excerpt}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <p class="eyebrow">Contact</p>
+      <h2>Media, sponsors & enquiries</h2>
+      <p>For media, sponsorship or supporter enquiries, contact Zoe’s team.</p>
+      <a class="button" href="mailto:zmpedersen1@gmail.com">Email Zoe’s team</a>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1000" role="img" aria-label="Race image placeholder">
+  <rect width="1400" height="1000" fill="#070707"/>
+  <g stroke="#f4f4f0" stroke-opacity=".16" stroke-width="2">
+    <path d="M0 220c260 70 420 70 700 0s460-70 700 0"/><path d="M0 330c260 70 420 70 700 0s460-70 700 0"/><path d="M0 440c260 70 420 70 700 0s460-70 700 0"/>
+    <path d="M0 550c260 70 420 70 700 0s460-70 700 0"/><path d="M0 660c260 70 420 70 700 0s460-70 700 0"/>
+  </g>
+  <text x="60" y="120" font-family="Arial, sans-serif" font-size="22" fill="#b8c8c0" letter-spacing="10">LIVE BLOG IMAGE</text>
+  <text x="60" y="880" font-family="Arial Black, Arial, sans-serif" font-size="92" fill="#f4f4f0" letter-spacing="-5">DROP ZOE PHOTO HERE</text>
+</svg>

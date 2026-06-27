@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getPosts, imageSrc } from '../../lib/sanity';
+const posts = await getPosts();
+---
+<BaseLayout title="Updates | Zoe Pedersen" description="Live updates and race notes from Zoe Pedersen.">
+  <Header />
+  <main class="page-main">
+    <section class="page-hero">
+      <p class="eyebrow">Live blog</p>
+      <h1>Updates</h1>
+      <p>Race week notes, travel updates, training camp snapshots and results.</p>
+    </section>
+
+    <section class="post-list">
+      {posts.map((post: any) => (
+        <a class="post-row" href={`/blog/${post.slug}`}>
+          <img src={imageSrc(post, '/assets/zoe-race.jpg')} alt={post.title} />
+          <div>
+            <span>{post.category} · {post.location} · {new Date(post.date).toLocaleDateString('en-NZ', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+            <h2>{post.title}</h2>
+            <p>{post.excerpt}</p>
+          </div>
+        </a>
+      ))}
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
