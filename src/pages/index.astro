@@ -6,7 +6,8 @@ import { verifiedFacts } from '../data';
 import { getFeaturedPosts, imageSrc } from '../lib/sanity';
 
 const posts = await getFeaturedPosts();
-const instagramWidgetUrl = import.meta.env.PUBLIC_INSTAGRAM_WIDGET_URL;
+const instagramWidgetUrl = (import.meta.env.PUBLIC_INSTAGRAM_WIDGET_URL || '').trim();
+const hasInstagramWidget = instagramWidgetUrl.startsWith('https://');
 ---
 <BaseLayout title="Zoe Pedersen | Glasgow 2026" description="Zoe Pedersen, New Zealand Aquablack and 2025 World Junior Champion in the women's 50m butterfly, selected for Glasgow 2026.">
   <Header />
@@ -105,28 +106,28 @@ const instagramWidgetUrl = import.meta.env.PUBLIC_INSTAGRAM_WIDGET_URL;
         <a href={verifiedFacts.socials.instagram} class="text-link" target="_blank" rel="noopener">Open Instagram →</a>
       </div>
 
-      {instagramWidgetUrl ? (
+      <div class="insta-marquee" aria-label="Zoe Pedersen photo slideshow">
+        <div class="insta-track">
+          <figure><img src="/assets/zoe-hero.jpg" alt="Zoe Pedersen portrait" /></figure>
+          <figure><img src="/assets/zoe-race.jpg" alt="Zoe Pedersen after racing" /></figure>
+          <figure><img src="/assets/zoe-poolside.jpg" alt="Zoe Pedersen poolside" /></figure>
+          <figure><img src="/assets/zoe-podium.jpg" alt="Zoe Pedersen at an awards event" /></figure>
+          <figure><img src="/assets/zoe-gold-graphic.jpg" alt="Zoe Pedersen gold result graphic" /></figure>
+          <figure><img src="/assets/zoe-hero.jpg" alt="Zoe Pedersen portrait" /></figure>
+          <figure><img src="/assets/zoe-race.jpg" alt="Zoe Pedersen after racing" /></figure>
+          <figure><img src="/assets/zoe-poolside.jpg" alt="Zoe Pedersen poolside" /></figure>
+          <figure><img src="/assets/zoe-podium.jpg" alt="Zoe Pedersen at an awards event" /></figure>
+          <figure><img src="/assets/zoe-gold-graphic.jpg" alt="Zoe Pedersen gold result graphic" /></figure>
+        </div>
+      </div>
+
+      {hasInstagramWidget && (
         <iframe
           class="instagram-widget"
           src={instagramWidgetUrl}
           title="Zoe Pedersen Instagram feed"
           loading="lazy"
         ></iframe>
-      ) : (
-        <div class="insta-marquee" aria-label="Instagram-style slideshow fallback">
-          <div class="insta-track">
-            <figure><img src="/assets/zoe-hero.jpg" alt="Zoe Pedersen portrait" /></figure>
-            <figure><img src="/assets/zoe-race.jpg" alt="Zoe Pedersen after racing" /></figure>
-            <figure><img src="/assets/zoe-poolside.jpg" alt="Zoe Pedersen poolside" /></figure>
-            <figure><img src="/assets/zoe-podium.jpg" alt="Zoe Pedersen at an awards event" /></figure>
-            <figure><img src="/assets/zoe-gold-graphic.jpg" alt="Zoe Pedersen gold result graphic" /></figure>
-            <figure><img src="/assets/zoe-hero.jpg" alt="Zoe Pedersen portrait" /></figure>
-            <figure><img src="/assets/zoe-race.jpg" alt="Zoe Pedersen after racing" /></figure>
-            <figure><img src="/assets/zoe-poolside.jpg" alt="Zoe Pedersen poolside" /></figure>
-            <figure><img src="/assets/zoe-podium.jpg" alt="Zoe Pedersen at an awards event" /></figure>
-            <figure><img src="/assets/zoe-gold-graphic.jpg" alt="Zoe Pedersen gold result graphic" /></figure>
-          </div>
-        </div>
       )}
     </section>
 
