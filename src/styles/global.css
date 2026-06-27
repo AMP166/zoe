@@ -451,54 +451,68 @@ h3 { font-size: 24px; line-height: 1.05; letter-spacing: -.03em; }
 }
 
 
-/* Mobile polish pass */
+/* Mobile v2: phone-first layout polish */
 @media (max-width: 760px) {
   :root {
-    --mobile-pad: 18px;
+    --mobile-pad: 16px;
   }
 
   body {
+    min-width: 0;
     overflow-x: hidden;
+  }
+
+  body::before {
+    background-size: 44px 44px;
+    opacity: .7;
   }
 
   main,
   .footer {
+    width: 100%;
     padding-inline: var(--mobile-pad);
   }
 
   main::before {
-    display: none;
+    display: none !important;
   }
 
   .site-header {
     position: sticky;
+    top: 0;
     height: auto;
-    padding: 14px var(--mobile-pad) 12px;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
+    padding: 12px var(--mobile-pad) 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    align-items: start;
   }
 
   .brand {
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 10px;
   }
 
   .brand-mark {
     padding: 7px 8px;
+    font-size: 11px;
   }
 
   .brand-text {
     font-size: 12px;
+    letter-spacing: .08em;
   }
 
   .nav {
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
     overflow-x: auto;
     flex-wrap: nowrap;
-    justify-content: flex-start;
-    gap: 18px;
     padding-bottom: 2px;
-    font-size: 11px;
+    font-size: 10px;
+    letter-spacing: .11em;
     scrollbar-width: none;
   }
 
@@ -507,30 +521,52 @@ h3 { font-size: 24px; line-height: 1.05; letter-spacing: -.03em; }
   }
 
   .hero {
-    padding: 36px 0 46px;
-    gap: 30px;
+    min-height: auto;
+    padding: 20px 0 42px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 
-  .section-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
+  .hero-media {
+    order: -1;
+  }
+
+  .portrait-frame {
+    min-height: 0;
+    height: 390px;
+    max-height: 72vh;
+  }
+
+  .portrait-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 13%;
+  }
+
+  .hero-copy {
+    min-width: 0;
   }
 
   .eyebrow {
     font-size: 10px;
-    letter-spacing: .16em;
-    margin-bottom: 12px;
+    letter-spacing: .15em;
+    margin-bottom: 11px;
   }
 
   h1 {
-    font-size: clamp(54px, 18vw, 86px);
+    font-size: clamp(52px, 17.4vw, 76px);
     line-height: .88;
-    margin-bottom: 16px;
+    letter-spacing: -.065em;
+    margin-bottom: 14px;
+    max-width: 100%;
   }
 
   h2 {
-    font-size: clamp(34px, 12vw, 52px);
+    font-size: clamp(32px, 11.2vw, 48px);
     line-height: .92;
+    letter-spacing: -.055em;
   }
 
   h3 {
@@ -538,44 +574,36 @@ h3 { font-size: 24px; line-height: 1.05; letter-spacing: -.03em; }
   }
 
   .lede {
-    font-size: clamp(24px, 8vw, 35px);
-    line-height: 1.06;
     max-width: 100%;
+    font-size: clamp(23px, 7.4vw, 31px);
+    line-height: 1.08;
+    letter-spacing: -.04em;
   }
 
   .hero-body {
-    font-size: 16px;
+    margin-top: 16px;
+    font-size: 15.5px;
     line-height: 1.5;
+    color: var(--muted);
   }
 
   .hero-actions {
-    margin-top: 22px;
+    margin-top: 20px;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
 
   .button {
     width: 100%;
-    min-height: 50px;
-    padding: 14px 16px;
-  }
-
-  .portrait-frame {
-    min-height: 0;
-    height: auto;
-    max-height: none;
-  }
-
-  .portrait-frame img {
-    width: 100%;
-    height: auto;
-    max-height: 620px;
-    object-fit: contain;
+    min-height: 48px;
+    padding: 13px 12px;
+    font-size: 11px;
+    letter-spacing: .1em;
   }
 
   .champion-band {
-    padding: 22px 0;
+    padding: 24px 0 18px;
   }
 
   .band-line {
@@ -586,35 +614,51 @@ h3 { font-size: 24px; line-height: 1.05; letter-spacing: -.03em; }
 
   .band-line strong,
   .band-line span {
-    padding: 12px 0;
+    padding: 10px 0;
     border-bottom: 1px solid var(--line);
   }
 
   .band-line strong {
-    font-size: 34px;
+    font-size: 32px;
+    line-height: .98;
   }
 
   .band-line span {
-    font-size: 18px;
+    font-size: 17px;
+    line-height: 1.25;
   }
 
   .band-line span:nth-child(3) {
-    font-size: 30px;
+    font-size: 42px;
+    line-height: .9;
     text-align: left;
+    font-weight: 900;
+    letter-spacing: -.055em;
+    color: var(--text);
   }
 
   .detail-ledger {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0 18px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 16px;
     padding-top: 8px;
   }
 
   .ledger-row {
-    padding: 16px 0;
+    min-width: 0;
+    padding: 15px 0 16px;
+  }
+
+  .ledger-row span,
+  .event-row span,
+  .post-card span,
+  .post-row span {
+    font-size: 10px;
+    letter-spacing: .13em;
   }
 
   .ledger-row strong {
-    font-size: 16px;
+    font-size: 15.5px;
+    line-height: 1.25;
   }
 
   .commonwealth-section,
@@ -626,26 +670,34 @@ h3 { font-size: 24px; line-height: 1.05; letter-spacing: -.03em; }
   .page-hero,
   .post-list,
   .article-main {
-    padding-block: 58px;
+    padding-block: 54px;
+  }
+
+  .commonwealth-section {
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
 
   .commonwealth-copy p:last-child,
   .story-text-grid p,
   .article-body p {
     font-size: 17px;
-    line-height: 1.55;
+    line-height: 1.52;
   }
 
   .campaign-events {
-    margin-top: 4px;
+    gap: 0;
   }
 
   .event-row {
-    padding: 18px 0;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 17px 0;
   }
 
   .event-row h3 {
-    font-size: 26px;
+    font-size: 25px;
+    line-height: 1.05;
   }
 
   .story-head,
@@ -657,33 +709,49 @@ h3 { font-size: 24px; line-height: 1.05; letter-spacing: -.03em; }
   }
 
   .story-head {
-    gap: 12px;
-    margin-bottom: 22px;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .story-feature-image {
+    margin-inline: calc(var(--mobile-pad) * -1);
+    border-left: 0;
+    border-right: 0;
   }
 
   .story-feature-image img {
-    height: 300px;
-    object-position: 50% 30%;
+    height: 290px;
+    object-fit: cover;
+    object-position: 50% 28%;
   }
 
   .story-text-grid {
-    gap: 8px;
+    gap: 0;
     padding-top: 22px;
   }
 
   .story-text-grid p {
     max-width: 100%;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
+  }
+
+  .gallery-grid-alt {
+    gap: 12px;
   }
 
   .wide-panel,
   .tall-panel {
-    min-height: 280px;
+    min-height: 0;
   }
 
   .gallery-panel img {
-    height: 100%;
-    min-height: 280px;
+    height: 300px;
+    min-height: 0;
+    object-position: center;
+  }
+
+  .tall-panel img {
+    object-position: 50% 20%;
   }
 
   .row-heading {
@@ -692,9 +760,14 @@ h3 { font-size: 24px; line-height: 1.05; letter-spacing: -.03em; }
     gap: 14px;
   }
 
+  .instagram-section .text-link {
+    width: fit-content;
+  }
+
   .insta-marquee {
     margin-inline: calc(var(--mobile-pad) * -1);
     width: calc(100% + (var(--mobile-pad) * 2));
+    padding: 10px 0;
     mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
   }
 
@@ -711,6 +784,10 @@ h3 { font-size: 24px; line-height: 1.05; letter-spacing: -.03em; }
     min-height: 360px;
   }
 
+  .post-grid {
+    gap: 12px;
+  }
+
   .post-card img {
     aspect-ratio: 1.15;
   }
@@ -719,8 +796,16 @@ h3 { font-size: 24px; line-height: 1.05; letter-spacing: -.03em; }
     padding: 16px;
   }
 
+  .post-card h3 {
+    margin-bottom: 8px;
+  }
+
   .contact-section p {
     font-size: 17px;
+  }
+
+  .contact-section .button {
+    margin-top: 6px;
   }
 
   .footer {
@@ -733,34 +818,50 @@ h3 { font-size: 24px; line-height: 1.05; letter-spacing: -.03em; }
   }
 }
 
-@media (max-width: 430px) {
-  main,
-  .footer,
-  .site-header {
-    padding-inline: 16px;
+@media (max-width: 390px) {
+  :root {
+    --mobile-pad: 14px;
+  }
+
+  .nav {
+    gap: 9px;
+    font-size: 9.5px;
+  }
+
+  .portrait-frame {
+    height: 350px;
+  }
+
+  h1 {
+    font-size: clamp(48px, 17vw, 66px);
+  }
+
+  .lede {
+    font-size: clamp(22px, 7vw, 28px);
+  }
+
+  .hero-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .button {
+    min-height: 47px;
   }
 
   .detail-ledger {
     grid-template-columns: 1fr;
   }
 
-  h1 {
-    font-size: clamp(50px, 19vw, 74px);
-  }
-
   .band-line strong {
-    font-size: 30px;
+    font-size: 29px;
   }
 
   .band-line span:nth-child(3) {
-    font-size: 28px;
+    font-size: 38px;
   }
 
   .story-feature-image img,
-  .wide-panel,
-  .tall-panel,
   .gallery-panel img {
-    min-height: 0;
-    height: 260px;
+    height: 255px;
   }
 }
