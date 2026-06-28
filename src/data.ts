@@ -3,7 +3,7 @@ export const verifiedFacts = {
   tagline: 'New Zealand swimmer. World Junior Champion — 50m Butterfly. Glasgow 2026.',
   aquablackNumber: '293',
   club: 'Coast',
-  coach: 'John Gatfield',
+  coach: 'Michael Weston',
   strokes: 'Sprint freestyle, butterfly',
   debut: '2025 World Aquatics Championships',
   heroAchievement: {
