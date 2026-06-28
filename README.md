@@ -14,7 +14,7 @@ Other public facts used from Swimming NZ / World Aquatics:
 
 - Aquablack #293
 - Club: Coast
-- Coach: John Gatfield
+- Coach: Michael Weston
 - Stroke: sprint freestyle, butterfly
 - Lead sponsor/media headline: 2025 World Junior Champion, Women's 50m Butterfly, 25.63
 - Glasgow 2026 selected event: Women's 50m Butterfly
