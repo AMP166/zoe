@@ -2,23 +2,23 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { verifiedFacts } from '../data';
+import { verifiedFacts, recentResults, recentHighlights } from '../data';
 import { getFeaturedPosts, imageSrc } from '../lib/sanity';
 
 const posts = await getFeaturedPosts();
 ---
-<BaseLayout title="Zoe Pedersen | Glasgow 2026" description="Zoe Pedersen, New Zealand Aquablack and 2025 World Junior Champion in the women's 50m butterfly, selected for Glasgow 2026.">
+<BaseLayout title="Zoe Pedersen | New Zealand Aquablack" description="Zoe Pedersen is a New Zealand Aquablack, World Junior Champion, Commonwealth Games finalist and New Zealand relay record holder.">
   <Header />
 
   <main>
     <section class="hero section-grid">
       <div class="hero-copy">
-        <p class="eyebrow">New Zealand Aquablack · Glasgow 2026</p>
+        <p class="eyebrow">New Zealand Aquablack · #293</p>
         <h1>Zoe Pedersen</h1>
-        <p class="lede">World Junior Champion in the women’s 50m butterfly. Selected to represent New Zealand at the Commonwealth Games.</p>
-        <p class="hero-body">A fast-rising New Zealand sprinter from Coast Swim Club, building towards Glasgow as part of the New Zealand team.</p>
+        <p class="lede">World Junior Champion. Commonwealth Games finalist. New Zealand record holder.</p>
+        <p class="hero-body">New Zealand sprint freestyler and butterfly specialist from Coast, racing internationally under coach Michael Weston.</p>
         <div class="hero-actions">
-          <a class="button" href="#glasgow">Glasgow 2026</a>
+          <a class="button" href="#results">2026 results</a>
           <a class="button secondary" href="#updates">Latest updates</a>
         </div>
       </div>
@@ -44,19 +44,48 @@ const posts = await getFeaturedPosts();
       <div class="ledger-row"><span>Aquablack</span><strong>#{verifiedFacts.aquablackNumber}</strong></div>
     </section>
 
-    <section class="commonwealth-section" id="glasgow">
-      <div class="commonwealth-copy">
-        <p class="eyebrow">Commonwealth Games campaign</p>
-        <h2>Road to Glasgow 2026</h2>
-        <p>Zoe has been named in the New Zealand swimming team for Glasgow 2026. Her campaign centres on the 50m butterfly, with additional permission-to-start entries in the 50m and 100m freestyle.</p>
+    <section class="results-section" id="results">
+      <div class="results-intro">
+        <div>
+          <p class="eyebrow">2026 season</p>
+          <h2>From Glasgow to Pan Pacs to national titles.</h2>
+        </div>
+        <p>Zoe’s first Commonwealth Games campaign was followed by a Pan Pacific final and a New Zealand relay record, before she returned home to win three individual titles at the 2026 New Zealand Short Course Championships.</p>
       </div>
-      <div class="campaign-events">
-        {verifiedFacts.glasgowEvents.map((item) => (
-          <article class="event-row">
-            <span>{item.status}</span>
-            <h3>{item.event}</h3>
+
+      <div class="results-ledger">
+        {recentResults.map((meet) => (
+          <article class="meet-block">
+            <header class="meet-head">
+              <div>
+                <span class="result-kicker">{meet.label}</span>
+                <h3>{meet.meet}</h3>
+              </div>
+              <div class="meet-meta">
+                <strong>{meet.headline}</strong>
+                <span>{meet.date} · {meet.location}</span>
+              </div>
+            </header>
+            <div class="meet-events">
+              {meet.events.map((item) => (
+                <div class="result-row">
+                  <span class="result-event">{item.event}</span>
+                  <strong>{item.result}</strong>
+                  <span class="result-detail">{item.detail}</span>
+                </div>
+              ))}
+            </div>
           </article>
         ))}
+      </div>
+    </section>
+
+    <section class="record-band" aria-label="New Zealand relay record">
+      <p class="eyebrow">National record</p>
+      <div class="record-line">
+        <strong>{verifiedFacts.nationalRecord.event}</strong>
+        <span>{verifiedFacts.nationalRecord.result}</span>
+        <span>{verifiedFacts.nationalRecord.note}</span>
       </div>
     </section>
 
@@ -71,16 +100,25 @@ const posts = await getFeaturedPosts();
       </figure>
 
       <div class="story-text-grid">
-        <p>Zoe Pedersen is a New Zealand swimmer from Coast Swim Club, racing across sprint freestyle and butterfly.</p>
-        <p>She came through the international junior ranks with a strong sprint profile and now moves toward Glasgow as part of New Zealand’s Commonwealth Games team.</p>
-        <p>Her surf lifesaving background, including Youth World Record marks, adds another layer to her profile as an all-round aquatic athlete.</p>
+        <p>Zoe Pedersen is a New Zealand Aquablack from Coast, specialising in sprint freestyle and butterfly under coach Michael Weston.</p>
+        <p>In 2026 she finished fifth in the Commonwealth Games 50m butterfly final, seventh at the Pan Pacific Championships and helped New Zealand break the long-course 4×100m freestyle relay record.</p>
+        <p>She also competes in surf lifesaving for Red Beach SLSC and holds Youth World Record marks in the 50m Manikin Carry and 100m Rescue Medley.</p>
+      </div>
+
+      <div class="highlight-ledger" aria-label="Other 2026 highlights">
+        {recentHighlights.map((item) => (
+          <div class="highlight-row">
+            <strong>{item.title}</strong>
+            <span>{item.detail}</span>
+          </div>
+        ))}
       </div>
     </section>
 
     <section class="gallery-section">
       <div class="section-heading row-heading">
         <div>
-          <p class="eyebrow">Campaign gallery</p>
+          <p class="eyebrow">Gallery</p>
           <h2>Poolside, race day, podium.</h2>
         </div>
       </div>
@@ -94,12 +132,29 @@ const posts = await getFeaturedPosts();
       </div>
     </section>
 
+    <section class="sponsor-section" id="partners">
+      <div class="sponsor-copy">
+        <p class="eyebrow">Sponsor</p>
+        <h2>Proudly supported by FINIS.</h2>
+        <p>Performance swimwear and training equipment supporting Zoe in training and competition.</p>
+      </div>
+      <a class="sponsor-lockup" href="https://www.finisswim.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit FINIS">
+        <span class="sponsor-fallback" aria-hidden="true">FINIS®</span>
+        <img
+          src="https://cdn.bfldr.com/I6FML9WY/at/pgm3cy-3os8qg-bea1w5/finis-logo?auto=webp&format=jpg"
+          alt="FINIS"
+          loading="lazy"
+          referrerpolicy="no-referrer"
+          onerror="this.style.display='none'"
+        />
+      </a>
+    </section>
 
     <section class="instagram-section" id="instagram">
       <div class="section-heading row-heading">
         <div>
           <p class="eyebrow">Instagram</p>
-          <h2>Follow the campaign</h2>
+          <h2>Follow Zoe</h2>
         </div>
         <a href={verifiedFacts.socials.instagram} class="text-link" target="_blank" rel="noopener">Open Instagram →</a>
       </div>
