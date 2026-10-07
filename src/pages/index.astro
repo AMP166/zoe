@@ -134,19 +134,27 @@ const posts = await getFeaturedPosts();
 
     <section class="sponsor-section" id="partners">
       <div class="sponsor-copy">
-        <p class="eyebrow">Sponsor</p>
-        <h2>Proudly supported by FINIS.</h2>
+        <p class="eyebrow">Partner</p>
+        <h2>Supported by FINIS.</h2>
         <p>Performance swimwear and training equipment supporting Zoe in training and competition.</p>
       </div>
-      <a class="sponsor-lockup" href="https://www.finisswim.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit FINIS">
-        <span class="sponsor-fallback" aria-hidden="true">FINIS®</span>
-        <img
-          src="https://cdn.bfldr.com/I6FML9WY/at/pgm3cy-3os8qg-bea1w5/finis-logo?auto=webp&format=jpg"
-          alt="FINIS"
-          loading="lazy"
-          referrerpolicy="no-referrer"
-          onerror="this.style.display='none'"
-        />
+
+      <a class="sponsor-card" href="https://www.finisswim.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit FINIS">
+        <div class="sponsor-card-meta">
+          <span>Official partner</span>
+          <span>Swim performance</span>
+        </div>
+        <div class="sponsor-logo-wrap">
+          <img
+            src="https://cdn.bfldr.com/I6FML9WY/at/pgm3cy-3os8qg-bea1w5/finis-logo?auto=webp&format=jpg"
+            alt="FINIS"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+            onerror="this.hidden=true; this.nextElementSibling.hidden=false"
+          />
+          <span class="sponsor-fallback" hidden>FINIS</span>
+        </div>
+        <span class="sponsor-visit">Visit FINIS ↗</span>
       </a>
     </section>
 
